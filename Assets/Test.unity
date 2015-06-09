@@ -73,7 +73,6 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
-    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &1921397195
 GameObject:
@@ -88,6 +87,7 @@ GameObject:
   - 124: {fileID: 1921397197}
   - 81: {fileID: 1921397196}
   - 132: {fileID: 1921397201}
+  - 114: {fileID: 1921397202}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -168,7 +168,9 @@ GUIText:
   m_GameObject: {fileID: 1921397195}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: Hello World
+  m_Text: 'Hello Word
+
+    Good'
   m_Anchor: 0
   m_Alignment: 0
   m_PixelOffset: {x: 8.09000015, y: 0}
@@ -183,3 +185,14 @@ GUIText:
     rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
+--- !u!114 &1921397202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1921397195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f309c255e1eb5403290bfbf0090b2da0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

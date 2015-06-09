@@ -5,7 +5,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 
-public class AppsFlyer : MonoBehaviour {
+public class AppsFlyer {
 
 	
 #if UNITY_IOS
