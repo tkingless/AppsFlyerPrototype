@@ -24,12 +24,12 @@ public class MainGui : MonoBehaviour {
     private string mStatusText = "Ready.";
 
     void Start () {
+		GooglePlayGames.PlayGamesPlatform.DebugLogEnabled = true;
         // Select the Google Play Games platform as our social platform implementation
         GooglePlayGames.PlayGamesPlatform.Activate();
     }
 
     void OnGUI() {
-		Debug.Log ("mStatusText: " + mStatusText);
         GUI.skin.button.fontSize = (int)(FontSizeMult * Screen.height);
         GUI.skin.label.fontSize = (int)(FontSizeMult * Screen.height);
 
@@ -60,6 +60,7 @@ public class MainGui : MonoBehaviour {
         } else {
           buttonLabel = "Authenticate";
           mStatusText = "Ready";
+			//Debug.Log ("mStatusText: " + mStatusText);
         }
 
         if (GUI.Button(buttonRect, buttonLabel)) {
@@ -70,19 +71,23 @@ public class MainGui : MonoBehaviour {
                 // Authenticate
                 mWaitingForAuth = true;
                 mStatusText = "Authenticating...";
+				Debug.Log ("mStatusText: " + mStatusText);
                 Social.localUser.Authenticate((bool success) => {
                     mWaitingForAuth = false;
                     if (success) {
 						Debug.Log("button clicked, process 2");
                       mStatusText = "Welcome " + Social.localUser.userName;
+						Debug.Log ("mStatusText: " + mStatusText);
                     } else {
 						Debug.Log("button clicked, process 3");
                       mStatusText = "Authentication failed.";
+						Debug.Log ("mStatusText: " + mStatusText);
                     }
                 });
             } else {
                 // Sign out!
                 mStatusText = "Signing out.";
+				Debug.Log ("mStatusText: " + mStatusText);
 				Debug.Log("button clicked, process 4");
                 ((GooglePlayGames.PlayGamesPlatform) Social.Active).SignOut();
             }
