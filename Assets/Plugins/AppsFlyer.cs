@@ -5,7 +5,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 
-public class AppsFlyer {
+public class AppsFlyer : MonoBehaviour {
 
 	
 #if UNITY_IOS
@@ -32,7 +32,16 @@ public class AppsFlyer {
 
 	[DllImport("__Internal")]
 	private static extern void mValidateReceipt(string eventName, string failedEventName, string eventValue, string productIdentifier, double price, string currency);
+	
+	[DllImport("__Internal")]
+	private static extern void mSetIsDebug(bool isDebug);
 
+	[DllImport("__Internal")]
+	private static extern void mSetIsSandbox(bool isSandbox);
+
+	[DllImport("__Internal")]
+	private static extern void mGetConversionData();
+	
 
 	public static void trackEvent(string eventName,string eventValue){
 		mTrackEvent(eventName,eventValue);
@@ -73,6 +82,17 @@ public class AppsFlyer {
 		mValidateReceipt (eventName, failedEventName, eventValue, productIdentifier, price, currency);
 	}
 
+	public static void setIsDebug(bool isDebug){
+		mSetIsDebug(isDebug);
+	}
+
+	public static void setIsSandbox(bool isSandbox){
+		mSetIsSandbox(isSandbox);
+	}
+
+	public static void getConversionData () {
+		mGetConversionData ();
+	}
 
 #elif UNITY_ANDROID
 	private static AndroidJavaClass cls_AppsFlyer = new AndroidJavaClass("com.appsflyer.AppsFlyerLib");
@@ -108,6 +128,16 @@ public class AppsFlyer {
 			}
 		}
     }
+
+	public static void setCollectIMEI (bool shouldCollect) {
+		
+		cls_AppsFlyer.CallStatic("setCollectIMEI", shouldCollect);
+	}
+	
+	public static void setCollectAndroidID (bool shouldCollect) {
+		print("AF.cs setCollectAndroidID");
+		cls_AppsFlyer.CallStatic("setCollectAndroidID", shouldCollect);
+	}
 
 	public static void setAppsFlyerKey(string key){
 		cls_AppsFlyer.CallStatic("setAppsFlyerKey", key);
@@ -165,6 +195,15 @@ public class AppsFlyer {
 		}
 	}
 
+	public static void setIsDebug(bool isDebug) {
+	}
+
+	public static void setIsSandbox(bool isSandbox){
+	}
+
+	public static void getConversionData () {
+	}
+
 #else
 	
 	public static void trackEvent(string eventName,string eventValue){}
@@ -176,7 +215,9 @@ public class AppsFlyer {
 	public static void setAppID(string appleAppId){}
 	public static void trackRichEvent(string eventName, Dictionary<string, string> eventValues){}
 	public static void validateReceipt(string eventName, string failedEventName, string eventValue, string productIdentifier, double price, string currency){}
-
+	public static void setIsDebug(bool isDebug){}
+	public static void setIsSandbox(bool isSandbox){}
+	public static void getConversionData (){}
 
 #endif
 }

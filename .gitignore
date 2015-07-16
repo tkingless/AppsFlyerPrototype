@@ -1,3 +1,13 @@
 Library/
 AndroidOutput/
 NotForGit
+iOSoutput/
+AppsFlyer-csharp.sln
+AppsFlyer.sln
+AppsFlyer.userprefs
+Assembly-CSharp-Editor-vs.csproj
+Assembly-CSharp-firstpass-vs.csproj
+Assembly-CSharp-firstpass.csproj
+Assembly-CSharp-vs.csproj
+Assembly-CSharp.csproj
+Temp/
